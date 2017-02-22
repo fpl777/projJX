@@ -1,2 +1,58 @@
 // A Java sample from the application.
-// This sample of source code begins to develop interactivity between the application and the user.
+// This sample of source code acts as a login form between the application and the user.
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class Log extends JFrame {
+     public static void main(String args[]) {
+          Log frameTable = new Log();
+     }
+     
+     JButton loginB = new JButton("Login");
+     JPanel panel = new JPanel();
+     JTextField userTxt = new JTextField(15);
+     JPasswordField passTxt = new JPasswordField(15);
+     
+     Log() {
+          super("Login Authentication");
+          setSize(300, 200);
+          setLocation(500, 280);
+          panel.setLayout(null);
+          
+          userTxt.setBounds(70, 30, 150, 20);
+          passTxt.setBounds(70, 65, 150, 20);
+          loginB.setBounds(110, 100, 80, 20);
+          
+          panel.add(loginB);
+          panel.add(userTxt);
+          panel.add(passTxt);
+          
+          getContentPane().add(panel);
+          setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+          setVisible(true);
+          actionlogin();
+     }
+     
+     public void actionlogin() {
+          loginB.addActionListener(new ActionListener()) {
+               public void actionPerformed(ActionEvent ae) {
+                    String unameStr = userTxt.getText();
+                    String passStr = passTxt.getText();
+                    
+                    if(unameStr.equals("Username") && passStr.equals("Password")) {
+                         newFrame regFace = new newframe();
+                         regFace.setVisible(true);
+                         dispose();
+                    } 
+                    else {
+                         JOptionPane.showMessageDialog(null, "Wrong Username and/or Password");
+                         userTxt.setText("");
+                         passTxt.setText("");
+                         userTxt.requestFocus();
+                    }
+               }
+          }
+     }
+}
